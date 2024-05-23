@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House price prediction</title>
+    <style>
+        .head{
+            color:white;
+            background-color: darkviolet;
+            padding:1%;
+            
+            margin-left:0px;
+        }
+        .req{
+            background-color: azure;
+            color:black;
+            width: 40%;
+            display: inline-block;
+            margin-right: 100px;
+            
+        }
+        .img{
+            margin-right: 20px;
+            
+        }
+        .note{
+            background-color: blueviolet;
+        }
+        form{
+            border:2px solid black;
+            padding:1%;
+            background-color: blueviolet;
+            width:20%;
+            color: white;
+            text-decoration: solid;
+            text-transform: uppercase;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <div class="head">
+       <h1> Welcome to Sales Price Prediction App</h1> 
+    </div>
+    <br>
+    <div class="req">
+        <h1>Please enter the following requirements</h1>
+        <h3>1.area</h3>
+        <h3>2.bedrooms</h3>
+        <h3>3.bathrooms	</h3>
+        <h3>4.parking	</h3>
+        <h3>5.basement</h3>
+        <h3>6.mainroad</h3>
+        <h3>7.furnishingstatus</h3>
+    </div>
+    <img src="static\eco_house_03.jpg" width="600px" height="400px">
+    <div class="note">Note: if u have folowing data u can move ahead</div>
+    <div class="for">
+        <h2><u>If you have the above data enter inside the below form</u></h2>
+    </div>
+    <form method="POST" action="{{ url_for('predict') }}">
+        <label for="area">area:</label>
+        <input type="number" id="area" name="area" required><br><br>
+        <label for="bathrooms">bathrooms:</label>
+        <input type="number" id="bathrooms" name="bathrooms" required><br><br>
+        <label for="bedrooms">Bedrooms:</label>
+        <input type="number" id="bedrooms" name="bedrooms" required><br><br>
+        <label for="mainroad">mainroad:</label>
+        <input type="number" id="mainroad" name="mainroad" required><br><br>
+        <label for="basement">basement:</label>
+        <input type="number" id="basement" name="basement" required><br><br>
+        <label for="parking">parking:</label>
+        <input type="number" id="parking" name="parking" required><br><br>
+        <label for="furnishingstatus">furnishingstatus:</label>
+        <input type="number" id="furnishingstatus" name="furnishingstatus" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if prediction %}
+        <h2>The predicted sales price is {{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
